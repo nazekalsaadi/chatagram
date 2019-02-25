@@ -54,7 +54,7 @@ export default class HomeScreen extends React.Component {
 
     console.log(result);
 
-    if (!result.cancelled) {
+    if (result.cancelled) {
       await uploadImageAsync("images", result.uri, this.state.email)
       await db.collection('users').doc(this.state.email).update({ caption: this.state.caption })
     }
